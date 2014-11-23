@@ -1,7 +1,10 @@
-﻿namespace LearningCreditSystem.Desktop
+﻿using LearningCreditSystem.Desktop.Common;
+
+namespace LearningCreditSystem.Desktop
 {
     using System;
     using System.Windows.Forms;
+    using LearningCreditSystem.Desktop.Forms;
 
     public static class Program
     {
@@ -13,7 +16,11 @@
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            SplashScreen splashScreen = new SplashScreen();
+            if (splashScreen.ShowDialog() == DialogResult.OK)
+            {
+                Application.Run(new LoginScreen());
+            }
         }
     }
 }

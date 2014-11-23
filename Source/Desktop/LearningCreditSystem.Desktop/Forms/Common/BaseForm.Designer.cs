@@ -1,6 +1,6 @@
-﻿namespace LearningCreditSystem.Desktop
+﻿namespace LearningCreditSystem.Desktop.Forms.Common
 {
-    public partial class Form1
+    partial class BaseForm
     {
         /// <summary>
         /// Required designer variable.
@@ -13,11 +13,10 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (this.components != null))
+            if (disposing && (components != null))
             {
-                this.components.Dispose();
+                components.Dispose();
             }
-
             base.Dispose(disposing);
         }
 
@@ -31,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form1";
+            this.Text = "BaseForm";
         }
 
         #endregion

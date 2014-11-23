@@ -1,0 +1,491 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TeamworkModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CLIENT">
+          <Key>
+            <PropertyRef Name="CLIENT_ID" />
+          </Key>
+          <Property Name="CLIENT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CLIENT_TYPE" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="CLIENT_EGN_BULSTAT" Type="nvarchar" MaxLength="13" Nullable="false" />
+          <Property Name="CLIENT_FULLNAME" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="400" />
+          <Property Name="TELEPHONE" Type="nvarchar" MaxLength="400" />
+          <Property Name="ADRESS_TEXT" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="CLIENT_NOTE" Type="nvarchar" MaxLength="400" />
+          <Property Name="MODIF_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CREDIT">
+          <Key>
+            <PropertyRef Name="CREDIT_ID" />
+          </Key>
+          <Property Name="CREDIT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CREDIT_NO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CREDIT_DATE" Type="datetime" Nullable="false" />
+          <Property Name="CREDIT_PERIOD" Type="int" Nullable="false" />
+          <Property Name="CREDIT_END_DATE" Type="datetime" Nullable="false" />
+          <Property Name="CREDIT_BEGIN_DATE" Type="datetime" Nullable="false" />
+          <Property Name="CLIENT_ID" Type="int" Nullable="false" />
+          <Property Name="PROD_CODE" Type="int" />
+          <Property Name="CREDIT_SUM" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="CREDIT_NOTE" Type="nvarchar" MaxLength="400" />
+          <Property Name="MODIF_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CREDIT_PLAN">
+          <Key>
+            <PropertyRef Name="MATURITY_ID" />
+          </Key>
+          <Property Name="MATURITY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CREDIT_ID" Type="int" />
+          <Property Name="MATURITY_DATE" Type="datetime" Nullable="false" />
+          <Property Name="MATURITY_SUM" Type="numeric" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="MATURITY_NOTE" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="MODIF_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CREDIT_PRODUCT">
+          <Key>
+            <PropertyRef Name="PROD_CODE" />
+          </Key>
+          <Property Name="PROD_CODE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PROD_NAME" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PROD_ACTIVE" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="PROD_SUM_FROM" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="PROD_SUM_TO" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="MODIF_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="INTEREST">
+          <Key>
+            <PropertyRef Name="PROD_CODE" />
+            <PropertyRef Name="PROD_PERIOD" />
+            <PropertyRef Name="SUM_FROM" />
+            <PropertyRef Name="SUM_TO" />
+          </Key>
+          <Property Name="PROD_CODE" Type="int" Nullable="false" />
+          <Property Name="PROD_PERIOD" Type="int" Nullable="false" />
+          <Property Name="SUM_FROM" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="SUM_TO" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PROD_PERIODS">
+          <Key>
+            <PropertyRef Name="PROD_CODE" />
+            <PropertyRef Name="PROD_PERIOD" />
+          </Key>
+          <Property Name="PROD_CODE" Type="int" Nullable="false" />
+          <Property Name="PROD_PERIOD" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_CREDIT_P_REFERENCE_CREDIT">
+          <End Role="CREDIT" Type="Self.CREDIT" Multiplicity="0..1" />
+          <End Role="CREDIT_PLAN" Type="Self.CREDIT_PLAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CREDIT">
+              <PropertyRef Name="CREDIT_ID" />
+            </Principal>
+            <Dependent Role="CREDIT_PLAN">
+              <PropertyRef Name="CREDIT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CREDIT_REFERENCE_CLIENT">
+          <End Role="CLIENT" Type="Self.CLIENT" Multiplicity="1" />
+          <End Role="CREDIT" Type="Self.CREDIT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENT">
+              <PropertyRef Name="CLIENT_ID" />
+            </Principal>
+            <Dependent Role="CREDIT">
+              <PropertyRef Name="CLIENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CREDIT_REFERENCE_CREDIT_P">
+          <End Role="CREDIT_PRODUCT" Type="Self.CREDIT_PRODUCT" Multiplicity="0..1" />
+          <End Role="CREDIT" Type="Self.CREDIT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CREDIT_PRODUCT">
+              <PropertyRef Name="PROD_CODE" />
+            </Principal>
+            <Dependent Role="CREDIT">
+              <PropertyRef Name="PROD_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INTEREST_REFERENCE_PROD_PER">
+          <End Role="PROD_PERIODS" Type="Self.PROD_PERIODS" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="INTEREST" Type="Self.INTEREST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROD_PERIODS">
+              <PropertyRef Name="PROD_CODE" />
+              <PropertyRef Name="PROD_PERIOD" />
+            </Principal>
+            <Dependent Role="INTEREST">
+              <PropertyRef Name="PROD_CODE" />
+              <PropertyRef Name="PROD_PERIOD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROD_PER_REFERENCE_CREDIT_P">
+          <End Role="CREDIT_PRODUCT" Type="Self.CREDIT_PRODUCT" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PROD_PERIODS" Type="Self.PROD_PERIODS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CREDIT_PRODUCT">
+              <PropertyRef Name="PROD_CODE" />
+            </Principal>
+            <Dependent Role="PROD_PERIODS">
+              <PropertyRef Name="PROD_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TeamworkModelStoreContainer">
+          <EntitySet Name="CLIENT" EntityType="Self.CLIENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CREDIT" EntityType="Self.CREDIT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CREDIT_PLAN" EntityType="Self.CREDIT_PLAN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CREDIT_PRODUCT" EntityType="Self.CREDIT_PRODUCT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INTEREST" EntityType="Self.INTEREST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROD_PERIODS" EntityType="Self.PROD_PERIODS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CREDIT_P_REFERENCE_CREDIT" Association="Self.FK_CREDIT_P_REFERENCE_CREDIT">
+            <End Role="CREDIT" EntitySet="CREDIT" />
+            <End Role="CREDIT_PLAN" EntitySet="CREDIT_PLAN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CREDIT_REFERENCE_CLIENT" Association="Self.FK_CREDIT_REFERENCE_CLIENT">
+            <End Role="CLIENT" EntitySet="CLIENT" />
+            <End Role="CREDIT" EntitySet="CREDIT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CREDIT_REFERENCE_CREDIT_P" Association="Self.FK_CREDIT_REFERENCE_CREDIT_P">
+            <End Role="CREDIT_PRODUCT" EntitySet="CREDIT_PRODUCT" />
+            <End Role="CREDIT" EntitySet="CREDIT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INTEREST_REFERENCE_PROD_PER" Association="Self.FK_INTEREST_REFERENCE_PROD_PER">
+            <End Role="PROD_PERIODS" EntitySet="PROD_PERIODS" />
+            <End Role="INTEREST" EntitySet="INTEREST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROD_PER_REFERENCE_CREDIT_P" Association="Self.FK_PROD_PER_REFERENCE_CREDIT_P">
+            <End Role="CREDIT_PRODUCT" EntitySet="CREDIT_PRODUCT" />
+            <End Role="PROD_PERIODS" EntitySet="PROD_PERIODS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TeamworkModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CLIENT">
+          <Key>
+            <PropertyRef Name="CLIENT_ID" />
+          </Key>
+          <Property Name="CLIENT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CLIENT_TYPE" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CLIENT_EGN_BULSTAT" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CLIENT_FULLNAME" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="TELEPHONE" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="ADRESS_TEXT" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CLIENT_NOTE" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="MODIF_DATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CREDIT" Relationship="Self.FK_CREDIT_REFERENCE_CLIENT" FromRole="CLIENT" ToRole="CREDIT" />
+        </EntityType>
+        <EntityType Name="CREDIT">
+          <Key>
+            <PropertyRef Name="CREDIT_ID" />
+          </Key>
+          <Property Name="CREDIT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CREDIT_NO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CREDIT_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CREDIT_PERIOD" Type="Int32" Nullable="false" />
+          <Property Name="CREDIT_END_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CREDIT_BEGIN_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CLIENT_ID" Type="Int32" Nullable="false" />
+          <Property Name="PROD_CODE" Type="Int32" />
+          <Property Name="CREDIT_SUM" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="CREDIT_NOTE" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="MODIF_DATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CLIENT" Relationship="Self.FK_CREDIT_REFERENCE_CLIENT" FromRole="CREDIT" ToRole="CLIENT" />
+          <NavigationProperty Name="CREDIT_PLAN" Relationship="Self.FK_CREDIT_P_REFERENCE_CREDIT" FromRole="CREDIT" ToRole="CREDIT_PLAN" />
+          <NavigationProperty Name="CREDIT_PRODUCT" Relationship="Self.FK_CREDIT_REFERENCE_CREDIT_P" FromRole="CREDIT" ToRole="CREDIT_PRODUCT" />
+        </EntityType>
+        <EntityType Name="CREDIT_PLAN">
+          <Key>
+            <PropertyRef Name="MATURITY_ID" />
+          </Key>
+          <Property Name="MATURITY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CREDIT_ID" Type="Int32" />
+          <Property Name="MATURITY_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MATURITY_SUM" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="MATURITY_NOTE" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MODIF_DATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CREDIT" Relationship="Self.FK_CREDIT_P_REFERENCE_CREDIT" FromRole="CREDIT_PLAN" ToRole="CREDIT" />
+        </EntityType>
+        <EntityType Name="CREDIT_PRODUCT">
+          <Key>
+            <PropertyRef Name="PROD_CODE" />
+          </Key>
+          <Property Name="PROD_CODE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PROD_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PROD_ACTIVE" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="PROD_SUM_FROM" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="PROD_SUM_TO" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="MODIF_DATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CREDIT" Relationship="Self.FK_CREDIT_REFERENCE_CREDIT_P" FromRole="CREDIT_PRODUCT" ToRole="CREDIT" />
+          <NavigationProperty Name="PROD_PERIODS" Relationship="Self.FK_PROD_PER_REFERENCE_CREDIT_P" FromRole="CREDIT_PRODUCT" ToRole="PROD_PERIODS" />
+        </EntityType>
+        <EntityType Name="INTEREST">
+          <Key>
+            <PropertyRef Name="PROD_CODE" />
+            <PropertyRef Name="PROD_PERIOD" />
+            <PropertyRef Name="SUM_FROM" />
+            <PropertyRef Name="SUM_TO" />
+          </Key>
+          <Property Name="PROD_CODE" Type="Int32" Nullable="false" />
+          <Property Name="PROD_PERIOD" Type="Int32" Nullable="false" />
+          <Property Name="SUM_FROM" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="SUM_TO" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="PROD_PERIODS" Relationship="Self.FK_INTEREST_REFERENCE_PROD_PER" FromRole="INTEREST" ToRole="PROD_PERIODS" />
+        </EntityType>
+        <EntityType Name="PROD_PERIODS">
+          <Key>
+            <PropertyRef Name="PROD_CODE" />
+            <PropertyRef Name="PROD_PERIOD" />
+          </Key>
+          <Property Name="PROD_CODE" Type="Int32" Nullable="false" />
+          <Property Name="PROD_PERIOD" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CREDIT_PRODUCT" Relationship="Self.FK_PROD_PER_REFERENCE_CREDIT_P" FromRole="PROD_PERIODS" ToRole="CREDIT_PRODUCT" />
+          <NavigationProperty Name="INTEREST" Relationship="Self.FK_INTEREST_REFERENCE_PROD_PER" FromRole="PROD_PERIODS" ToRole="INTEREST" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_CREDIT_REFERENCE_CLIENT">
+          <End Role="CLIENT" Type="Self.CLIENT" Multiplicity="1" />
+          <End Role="CREDIT" Type="Self.CREDIT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENT">
+              <PropertyRef Name="CLIENT_ID" />
+            </Principal>
+            <Dependent Role="CREDIT">
+              <PropertyRef Name="CLIENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CREDIT_P_REFERENCE_CREDIT">
+          <End Role="CREDIT" Type="Self.CREDIT" Multiplicity="0..1" />
+          <End Role="CREDIT_PLAN" Type="Self.CREDIT_PLAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CREDIT">
+              <PropertyRef Name="CREDIT_ID" />
+            </Principal>
+            <Dependent Role="CREDIT_PLAN">
+              <PropertyRef Name="CREDIT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CREDIT_REFERENCE_CREDIT_P">
+          <End Role="CREDIT_PRODUCT" Type="Self.CREDIT_PRODUCT" Multiplicity="0..1" />
+          <End Role="CREDIT" Type="Self.CREDIT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CREDIT_PRODUCT">
+              <PropertyRef Name="PROD_CODE" />
+            </Principal>
+            <Dependent Role="CREDIT">
+              <PropertyRef Name="PROD_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROD_PER_REFERENCE_CREDIT_P">
+          <End Role="CREDIT_PRODUCT" Type="Self.CREDIT_PRODUCT" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PROD_PERIODS" Type="Self.PROD_PERIODS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CREDIT_PRODUCT">
+              <PropertyRef Name="PROD_CODE" />
+            </Principal>
+            <Dependent Role="PROD_PERIODS">
+              <PropertyRef Name="PROD_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INTEREST_REFERENCE_PROD_PER">
+          <End Role="PROD_PERIODS" Type="Self.PROD_PERIODS" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="INTEREST" Type="Self.INTEREST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROD_PERIODS">
+              <PropertyRef Name="PROD_CODE" />
+              <PropertyRef Name="PROD_PERIOD" />
+            </Principal>
+            <Dependent Role="INTEREST">
+              <PropertyRef Name="PROD_CODE" />
+              <PropertyRef Name="PROD_PERIOD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CreaditSystemEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CLIENT" EntityType="Self.CLIENT" />
+          <EntitySet Name="CREDIT" EntityType="Self.CREDIT" />
+          <EntitySet Name="CREDIT_PLAN" EntityType="Self.CREDIT_PLAN" />
+          <EntitySet Name="CREDIT_PRODUCT" EntityType="Self.CREDIT_PRODUCT" />
+          <EntitySet Name="INTEREST" EntityType="Self.INTEREST" />
+          <EntitySet Name="PROD_PERIODS" EntityType="Self.PROD_PERIODS" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_CREDIT_REFERENCE_CLIENT" Association="Self.FK_CREDIT_REFERENCE_CLIENT">
+            <End Role="CLIENT" EntitySet="CLIENT" />
+            <End Role="CREDIT" EntitySet="CREDIT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CREDIT_P_REFERENCE_CREDIT" Association="Self.FK_CREDIT_P_REFERENCE_CREDIT">
+            <End Role="CREDIT" EntitySet="CREDIT" />
+            <End Role="CREDIT_PLAN" EntitySet="CREDIT_PLAN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CREDIT_REFERENCE_CREDIT_P" Association="Self.FK_CREDIT_REFERENCE_CREDIT_P">
+            <End Role="CREDIT_PRODUCT" EntitySet="CREDIT_PRODUCT" />
+            <End Role="CREDIT" EntitySet="CREDIT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROD_PER_REFERENCE_CREDIT_P" Association="Self.FK_PROD_PER_REFERENCE_CREDIT_P">
+            <End Role="CREDIT_PRODUCT" EntitySet="CREDIT_PRODUCT" />
+            <End Role="PROD_PERIODS" EntitySet="PROD_PERIODS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INTEREST_REFERENCE_PROD_PER" Association="Self.FK_INTEREST_REFERENCE_PROD_PER">
+            <End Role="PROD_PERIODS" EntitySet="PROD_PERIODS" />
+            <End Role="INTEREST" EntitySet="INTEREST" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TeamworkModelStoreContainer" CdmEntityContainer="CreaditSystemEntities">
+          <EntitySetMapping Name="CLIENT">
+            <EntityTypeMapping TypeName="TeamworkModel.CLIENT">
+              <MappingFragment StoreEntitySet="CLIENT">
+                <ScalarProperty Name="CLIENT_ID" ColumnName="CLIENT_ID" />
+                <ScalarProperty Name="CLIENT_TYPE" ColumnName="CLIENT_TYPE" />
+                <ScalarProperty Name="CLIENT_EGN_BULSTAT" ColumnName="CLIENT_EGN_BULSTAT" />
+                <ScalarProperty Name="CLIENT_FULLNAME" ColumnName="CLIENT_FULLNAME" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="TELEPHONE" ColumnName="TELEPHONE" />
+                <ScalarProperty Name="ADRESS_TEXT" ColumnName="ADRESS_TEXT" />
+                <ScalarProperty Name="CLIENT_NOTE" ColumnName="CLIENT_NOTE" />
+                <ScalarProperty Name="MODIF_DATE" ColumnName="MODIF_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CREDIT">
+            <EntityTypeMapping TypeName="TeamworkModel.CREDIT">
+              <MappingFragment StoreEntitySet="CREDIT">
+                <ScalarProperty Name="CREDIT_ID" ColumnName="CREDIT_ID" />
+                <ScalarProperty Name="CREDIT_NO" ColumnName="CREDIT_NO" />
+                <ScalarProperty Name="CREDIT_DATE" ColumnName="CREDIT_DATE" />
+                <ScalarProperty Name="CREDIT_PERIOD" ColumnName="CREDIT_PERIOD" />
+                <ScalarProperty Name="CREDIT_END_DATE" ColumnName="CREDIT_END_DATE" />
+                <ScalarProperty Name="CREDIT_BEGIN_DATE" ColumnName="CREDIT_BEGIN_DATE" />
+                <ScalarProperty Name="CLIENT_ID" ColumnName="CLIENT_ID" />
+                <ScalarProperty Name="PROD_CODE" ColumnName="PROD_CODE" />
+                <ScalarProperty Name="CREDIT_SUM" ColumnName="CREDIT_SUM" />
+                <ScalarProperty Name="CREDIT_NOTE" ColumnName="CREDIT_NOTE" />
+                <ScalarProperty Name="MODIF_DATE" ColumnName="MODIF_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CREDIT_PLAN">
+            <EntityTypeMapping TypeName="TeamworkModel.CREDIT_PLAN">
+              <MappingFragment StoreEntitySet="CREDIT_PLAN">
+                <ScalarProperty Name="MATURITY_ID" ColumnName="MATURITY_ID" />
+                <ScalarProperty Name="CREDIT_ID" ColumnName="CREDIT_ID" />
+                <ScalarProperty Name="MATURITY_DATE" ColumnName="MATURITY_DATE" />
+                <ScalarProperty Name="MATURITY_SUM" ColumnName="MATURITY_SUM" />
+                <ScalarProperty Name="MATURITY_NOTE" ColumnName="MATURITY_NOTE" />
+                <ScalarProperty Name="MODIF_DATE" ColumnName="MODIF_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CREDIT_PRODUCT">
+            <EntityTypeMapping TypeName="TeamworkModel.CREDIT_PRODUCT">
+              <MappingFragment StoreEntitySet="CREDIT_PRODUCT">
+                <ScalarProperty Name="PROD_CODE" ColumnName="PROD_CODE" />
+                <ScalarProperty Name="PROD_NAME" ColumnName="PROD_NAME" />
+                <ScalarProperty Name="PROD_ACTIVE" ColumnName="PROD_ACTIVE" />
+                <ScalarProperty Name="PROD_SUM_FROM" ColumnName="PROD_SUM_FROM" />
+                <ScalarProperty Name="PROD_SUM_TO" ColumnName="PROD_SUM_TO" />
+                <ScalarProperty Name="MODIF_DATE" ColumnName="MODIF_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INTEREST">
+            <EntityTypeMapping TypeName="TeamworkModel.INTEREST">
+              <MappingFragment StoreEntitySet="INTEREST">
+                <ScalarProperty Name="PROD_CODE" ColumnName="PROD_CODE" />
+                <ScalarProperty Name="PROD_PERIOD" ColumnName="PROD_PERIOD" />
+                <ScalarProperty Name="SUM_FROM" ColumnName="SUM_FROM" />
+                <ScalarProperty Name="SUM_TO" ColumnName="SUM_TO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROD_PERIODS">
+            <EntityTypeMapping TypeName="TeamworkModel.PROD_PERIODS">
+              <MappingFragment StoreEntitySet="PROD_PERIODS">
+                <ScalarProperty Name="PROD_CODE" ColumnName="PROD_CODE" />
+                <ScalarProperty Name="PROD_PERIOD" ColumnName="PROD_PERIOD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="TeamworkModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

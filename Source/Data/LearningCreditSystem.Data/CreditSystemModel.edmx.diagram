@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7eb7d7f2ff4244ae9d93c9271f37f70d" Name="Diagram1">
+        <EntityTypeShape EntityType="TeamworkModel.CLIENT" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamworkModel.CREDIT" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamworkModel.CREDIT_PLAN" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamworkModel.CREDIT_PRODUCT" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamworkModel.INTEREST" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamworkModel.PROD_PERIODS" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamworkModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="2.625" IsExpanded="true" />
+        <AssociationConnector Association="TeamworkModel.FK_CREDIT_REFERENCE_CLIENT" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamworkModel.FK_CREDIT_P_REFERENCE_CREDIT" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamworkModel.FK_CREDIT_REFERENCE_CREDIT_P" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamworkModel.FK_PROD_PER_REFERENCE_CREDIT_P" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamworkModel.FK_INTEREST_REFERENCE_PROD_PER" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
