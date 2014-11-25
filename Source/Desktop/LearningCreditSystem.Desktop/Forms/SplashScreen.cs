@@ -10,23 +10,21 @@ using System.Windows.Forms;
 
 namespace LearningCreditSystem.Desktop.Forms
 {
-    using LearningCreditSystem.Data;
-
     public partial class SplashScreen : Form
     {
         public SplashScreen()
         {
-            var context = new CreaditSystemEntities();
-
-            context.CLIENT.Add(new CLIENT
-            {
-                CLIENT_FULLNAME = "Pesho Pehev",
-
-            });
-
-            
-
             InitializeComponent();
+            splashScreenTimer.Enabled = true;
+            splashScreenTimer.Interval = 3000;
+            splashScreenTimer.Tick += (splashScreenTimer_Tick);
+        }
+
+        private void splashScreenTimer_Tick(object sender, EventArgs e)
+        {
+            splashScreenTimer.Stop();
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }

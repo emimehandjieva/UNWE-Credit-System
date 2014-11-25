@@ -29,10 +29,26 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.splashScreenTimer = new System.Windows.Forms.Timer(this.components);
+            this.SuspendLayout();
+            // 
+            // splashScreenTimer
+            // 
+            this.splashScreenTimer.Tick += new System.EventHandler(this.splashScreenTimer_Tick);
+            // 
+            // SplashScreen
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Name = "SplashScreen";
             this.Text = "SplashScreen";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Timer splashScreenTimer;
     }
 }

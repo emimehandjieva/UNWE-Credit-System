@@ -57,17 +57,29 @@
     <Compile Include="Forms\Common\BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\EditCustomerInforamtion.cs">
+    <Compile Include="Forms\EditCustomerInformation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\EditCustomerInforamtion.Designer.cs">
-      <DependentUpon>EditCustomerInforamtion.cs</DependentUpon>
+    <Compile Include="Forms\EditCustomerInformation.Designer.cs">
+      <DependentUpon>EditCustomerInformation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\LoginScreen.cs">
+    <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\LoginScreen.Designer.cs">
-      <DependentUpon>LoginScreen.cs</DependentUpon>
+    <Compile Include="Forms\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainScreen.Designer.cs">
+      <DependentUpon>MainScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SearchIndividualCustomers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SearchIndividualCustomers.Designer.cs">
+      <DependentUpon>SearchIndividualCustomers.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SplashScreen.cs">
       <SubType>Form</SubType>
@@ -77,8 +89,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\EditCustomerInforamtion.resx">
-      <DependentUpon>EditCustomerInforamtion.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\EditCustomerInformation.resx">
+      <DependentUpon>EditCustomerInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainScreen.resx">
+      <DependentUpon>MainScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SearchIndividualCustomers.resx">
+      <DependentUpon>SearchIndividualCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SplashScreen.resx">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -88,6 +112,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -104,13 +129,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\1623903.jpg" />
-    <Content Include="Resources\16239031.jpg" />
-    <Content Include="Resources\16239032.jpg" />
-    <Content Include="Resources\blue-logo-flame-hi.png" />
-    <Content Include="Resources\blue.jpg" />
-    <Content Include="Resources\blue1.jpg" />
-    <Content Include="Resources\blue2.jpg" />
+    <None Include="Resources\images.jpg" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
