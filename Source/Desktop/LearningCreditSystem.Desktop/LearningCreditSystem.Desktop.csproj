@@ -51,17 +51,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\AddNewCreditProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddNewCreditProduct.Designer.cs">
+      <DependentUpon>AddNewCreditProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Common\BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Common\BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\EditCustomerInformation.cs">
+    <Compile Include="Forms\CreditDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\EditCustomerInformation.Designer.cs">
-      <DependentUpon>EditCustomerInformation.cs</DependentUpon>
+    <Compile Include="Forms\CreditDetails.Designer.cs">
+      <DependentUpon>CreditDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CreditProducts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CreditProducts.Designer.cs">
+      <DependentUpon>CreditProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EditCreditProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditCreditProduct.Designer.cs">
+      <DependentUpon>EditCreditProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EditCustomerсInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditCustomerсInformation.Designer.cs">
+      <DependentUpon>EditCustomerсInformation.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
@@ -69,11 +93,29 @@
     <Compile Include="Forms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\LoginFormTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LoginFormTest.Designer.cs">
+      <DependentUpon>LoginFormTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MainScreen.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\MainScreen.Designer.cs">
       <DependentUpon>MainScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SearchCorporateCustomers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SearchCorporateCustomers.Designer.cs">
+      <DependentUpon>SearchCorporateCustomers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SearchCreditProducts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SearchCreditProducts.Designer.cs">
+      <DependentUpon>SearchCreditProducts.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SearchIndividualCustomers.cs">
       <SubType>Form</SubType>
@@ -87,22 +129,52 @@
     <Compile Include="Forms\SplashScreen.Designer.cs">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Test.Designer.cs">
+      <DependentUpon>Test.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\EditCustomerInformation.resx">
-      <DependentUpon>EditCustomerInformation.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AddNewCreditProduct.resx">
+      <DependentUpon>AddNewCreditProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CreditDetails.resx">
+      <DependentUpon>CreditDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CreditProducts.resx">
+      <DependentUpon>CreditProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EditCreditProduct.resx">
+      <DependentUpon>EditCreditProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EditCustomerсInformation.resx">
+      <DependentUpon>EditCustomerсInformation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LoginFormTest.resx">
+      <DependentUpon>LoginFormTest.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainScreen.resx">
       <DependentUpon>MainScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SearchCorporateCustomers.resx">
+      <DependentUpon>SearchCorporateCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SearchCreditProducts.resx">
+      <DependentUpon>SearchCreditProducts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SearchIndividualCustomers.resx">
       <DependentUpon>SearchIndividualCustomers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Test.resx">
+      <DependentUpon>Test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -131,7 +203,9 @@
   <ItemGroup>
     <None Include="Resources\images.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\BusinessBackground.png" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Data\LearningCreditSystem.Data\LearningCreditSystem.Data.csproj">
       <Project>{dfc61f99-d7c3-42e7-a792-95a57d32e37a}</Project>

@@ -7,6 +7,8 @@
         public BaseForm()
         {
             this.InitializeComponent();
+
+            // Font Settings
         }
     }
 }
