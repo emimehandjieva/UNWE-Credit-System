@@ -13,7 +13,7 @@
         public MainScreen()
         {
             InitializeComponent();
-            tabContainer.SelectedTab = creditProductsTab; // Useful works - use it later
+            // tabContainer.SelectedTab = creditProductsTab; // Useful works - use it later
 
             // All tabs
             customersTab.BackColor = ColorFactory.GetColor(ProjectColor.LightGrey);
@@ -43,6 +43,8 @@
 
         private void SetColumnNames()
         {
+            ClearDatagridView();
+
             int columnsCount = CurrentColumnNames.Length;
             customersDatagridView.ColumnCount = columnsCount;
 
@@ -58,6 +60,12 @@
             {
                 customersDatagridView.Rows.Add(row);
             }
+        }
+
+        private void ClearDatagridView()
+        {
+            customersDatagridView.Rows.Clear();
+            customersDatagridView.Columns.Clear();
         }
 
         private void registerIndividualCustomers_Click(object sender, System.EventArgs e)
@@ -95,12 +103,12 @@
         private void customerDatagridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             var currentRowSelected = customersDatagridView.CurrentRow;
-            string PIN = currentRowSelected.Cells[0].Value.ToString();
-            string firstName = currentRowSelected.Cells[1].Value.ToString();
-            string lastName = currentRowSelected.Cells[2].Value.ToString();
-            string email = currentRowSelected.Cells[3].Value.ToString();
-            string phone = currentRowSelected.Cells[4].Value.ToString();
-            string[] customerData = {PIN, firstName, lastName, email, phone};
+            List<string> customerDataList = new List<string>();
+            foreach (DataGridViewTextBoxCell cell in currentRowSelected.Cells)
+            {
+                customerDataList.Add(cell.Value.ToString());
+            }
+            string[] customerData = customerDataList.ToArray();
             var editForm = new EditCustomerсInformation(CurrentColumnNames, customerData);
             editForm.ShowDialog();
         }

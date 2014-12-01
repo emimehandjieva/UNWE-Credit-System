@@ -31,15 +31,15 @@
             this.searchButton = new System.Windows.Forms.Button();
             this.searchPanel = new System.Windows.Forms.TabControl();
             this.customerMainData = new System.Windows.Forms.TabPage();
-            this.PINLabel = new System.Windows.Forms.Label();
-            this.firstNameLabel = new System.Windows.Forms.Label();
-            this.customerLastName = new System.Windows.Forms.TextBox();
-            this.customerFirstName = new System.Windows.Forms.TextBox();
+            this.UICLabel = new System.Windows.Forms.Label();
+            this.companyNameLabel = new System.Windows.Forms.Label();
+            this.companyName = new System.Windows.Forms.TextBox();
+            this.companyUIC = new System.Windows.Forms.TextBox();
             this.customerDetails = new System.Windows.Forms.TabPage();
-            this.phoneInput = new System.Windows.Forms.TextBox();
-            this.emailInput = new System.Windows.Forms.TextBox();
-            this.phoneLabel = new System.Windows.Forms.Label();
-            this.emailLabel = new System.Windows.Forms.Label();
+            this.companyPhone = new System.Windows.Forms.TextBox();
+            this.companyEmail = new System.Windows.Forms.TextBox();
+            this.companyPhoneLabel = new System.Windows.Forms.Label();
+            this.companyEmailLabel = new System.Windows.Forms.Label();
             this.searchPanel.SuspendLayout();
             this.customerMainData.SuspendLayout();
             this.customerDetails.SuspendLayout();
@@ -56,6 +56,7 @@
             this.searchButton.TabIndex = 3;
             this.searchButton.Text = "Търси";
             this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // searchPanel
             // 
@@ -70,10 +71,10 @@
             // 
             // customerMainData
             // 
-            this.customerMainData.Controls.Add(this.PINLabel);
-            this.customerMainData.Controls.Add(this.firstNameLabel);
-            this.customerMainData.Controls.Add(this.customerLastName);
-            this.customerMainData.Controls.Add(this.customerFirstName);
+            this.customerMainData.Controls.Add(this.UICLabel);
+            this.customerMainData.Controls.Add(this.companyNameLabel);
+            this.customerMainData.Controls.Add(this.companyName);
+            this.customerMainData.Controls.Add(this.companyUIC);
             this.customerMainData.Location = new System.Drawing.Point(4, 27);
             this.customerMainData.Name = "customerMainData";
             this.customerMainData.Padding = new System.Windows.Forms.Padding(3);
@@ -82,44 +83,44 @@
             this.customerMainData.Text = "Основни данни";
             this.customerMainData.UseVisualStyleBackColor = true;
             // 
-            // PINLabel
+            // UICLabel
             // 
-            this.PINLabel.AutoSize = true;
-            this.PINLabel.Location = new System.Drawing.Point(161, 46);
-            this.PINLabel.Name = "PINLabel";
-            this.PINLabel.Size = new System.Drawing.Size(84, 18);
-            this.PINLabel.TabIndex = 5;
-            this.PINLabel.Text = "БУЛСТАТ";
+            this.UICLabel.AutoSize = true;
+            this.UICLabel.Location = new System.Drawing.Point(161, 46);
+            this.UICLabel.Name = "UICLabel";
+            this.UICLabel.Size = new System.Drawing.Size(84, 18);
+            this.UICLabel.TabIndex = 5;
+            this.UICLabel.Text = "БУЛСТАТ";
             // 
-            // firstNameLabel
+            // companyNameLabel
             // 
-            this.firstNameLabel.AutoSize = true;
-            this.firstNameLabel.Location = new System.Drawing.Point(162, 110);
-            this.firstNameLabel.Name = "firstNameLabel";
-            this.firstNameLabel.Size = new System.Drawing.Size(57, 18);
-            this.firstNameLabel.TabIndex = 3;
-            this.firstNameLabel.Text = "Фирма";
+            this.companyNameLabel.AutoSize = true;
+            this.companyNameLabel.Location = new System.Drawing.Point(162, 110);
+            this.companyNameLabel.Name = "companyNameLabel";
+            this.companyNameLabel.Size = new System.Drawing.Size(57, 18);
+            this.companyNameLabel.TabIndex = 3;
+            this.companyNameLabel.Text = "Фирма";
             // 
-            // customerLastName
+            // companyName
             // 
-            this.customerLastName.Location = new System.Drawing.Point(321, 102);
-            this.customerLastName.Name = "customerLastName";
-            this.customerLastName.Size = new System.Drawing.Size(161, 26);
-            this.customerLastName.TabIndex = 1;
+            this.companyName.Location = new System.Drawing.Point(321, 102);
+            this.companyName.Name = "companyName";
+            this.companyName.Size = new System.Drawing.Size(161, 26);
+            this.companyName.TabIndex = 1;
             // 
-            // customerFirstName
+            // companyUIC
             // 
-            this.customerFirstName.Location = new System.Drawing.Point(321, 46);
-            this.customerFirstName.Name = "customerFirstName";
-            this.customerFirstName.Size = new System.Drawing.Size(161, 26);
-            this.customerFirstName.TabIndex = 0;
+            this.companyUIC.Location = new System.Drawing.Point(321, 46);
+            this.companyUIC.Name = "companyUIC";
+            this.companyUIC.Size = new System.Drawing.Size(161, 26);
+            this.companyUIC.TabIndex = 0;
             // 
             // customerDetails
             // 
-            this.customerDetails.Controls.Add(this.phoneInput);
-            this.customerDetails.Controls.Add(this.emailInput);
-            this.customerDetails.Controls.Add(this.phoneLabel);
-            this.customerDetails.Controls.Add(this.emailLabel);
+            this.customerDetails.Controls.Add(this.companyPhone);
+            this.customerDetails.Controls.Add(this.companyEmail);
+            this.customerDetails.Controls.Add(this.companyPhoneLabel);
+            this.customerDetails.Controls.Add(this.companyEmailLabel);
             this.customerDetails.Location = new System.Drawing.Point(4, 27);
             this.customerDetails.Name = "customerDetails";
             this.customerDetails.Padding = new System.Windows.Forms.Padding(3);
@@ -128,37 +129,37 @@
             this.customerDetails.Text = "Детайли";
             this.customerDetails.UseVisualStyleBackColor = true;
             // 
-            // phoneInput
+            // companyPhone
             // 
-            this.phoneInput.Location = new System.Drawing.Point(291, 121);
-            this.phoneInput.Name = "phoneInput";
-            this.phoneInput.Size = new System.Drawing.Size(148, 26);
-            this.phoneInput.TabIndex = 3;
+            this.companyPhone.Location = new System.Drawing.Point(291, 121);
+            this.companyPhone.Name = "companyPhone";
+            this.companyPhone.Size = new System.Drawing.Size(148, 26);
+            this.companyPhone.TabIndex = 3;
             // 
-            // emailInput
+            // companyEmail
             // 
-            this.emailInput.Location = new System.Drawing.Point(291, 44);
-            this.emailInput.Name = "emailInput";
-            this.emailInput.Size = new System.Drawing.Size(148, 26);
-            this.emailInput.TabIndex = 2;
+            this.companyEmail.Location = new System.Drawing.Point(291, 44);
+            this.companyEmail.Name = "companyEmail";
+            this.companyEmail.Size = new System.Drawing.Size(148, 26);
+            this.companyEmail.TabIndex = 2;
             // 
-            // phoneLabel
+            // companyPhoneLabel
             // 
-            this.phoneLabel.AutoSize = true;
-            this.phoneLabel.Location = new System.Drawing.Point(136, 121);
-            this.phoneLabel.Name = "phoneLabel";
-            this.phoneLabel.Size = new System.Drawing.Size(73, 18);
-            this.phoneLabel.TabIndex = 1;
-            this.phoneLabel.Text = "Телефон";
+            this.companyPhoneLabel.AutoSize = true;
+            this.companyPhoneLabel.Location = new System.Drawing.Point(136, 121);
+            this.companyPhoneLabel.Name = "companyPhoneLabel";
+            this.companyPhoneLabel.Size = new System.Drawing.Size(73, 18);
+            this.companyPhoneLabel.TabIndex = 1;
+            this.companyPhoneLabel.Text = "Телефон";
             // 
-            // emailLabel
+            // companyEmailLabel
             // 
-            this.emailLabel.AutoSize = true;
-            this.emailLabel.Location = new System.Drawing.Point(136, 44);
-            this.emailLabel.Name = "emailLabel";
-            this.emailLabel.Size = new System.Drawing.Size(48, 18);
-            this.emailLabel.TabIndex = 0;
-            this.emailLabel.Text = "Email";
+            this.companyEmailLabel.AutoSize = true;
+            this.companyEmailLabel.Location = new System.Drawing.Point(136, 44);
+            this.companyEmailLabel.Name = "companyEmailLabel";
+            this.companyEmailLabel.Size = new System.Drawing.Size(48, 18);
+            this.companyEmailLabel.TabIndex = 0;
+            this.companyEmailLabel.Text = "Email";
             // 
             // SearchCorporateCustomers
             // 
@@ -172,7 +173,6 @@
             this.DoubleBuffered = true;
             this.Name = "SearchCorporateCustomers";
             this.Text = "SearchCorporateCustomers";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SearchCorporateCustomers_FormClosing);
             this.searchPanel.ResumeLayout(false);
             this.customerMainData.ResumeLayout(false);
             this.customerMainData.PerformLayout();
@@ -187,14 +187,14 @@
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.TabControl searchPanel;
         private System.Windows.Forms.TabPage customerMainData;
-        private System.Windows.Forms.Label PINLabel;
-        private System.Windows.Forms.Label firstNameLabel;
-        private System.Windows.Forms.TextBox customerLastName;
-        private System.Windows.Forms.TextBox customerFirstName;
+        private System.Windows.Forms.Label UICLabel;
+        private System.Windows.Forms.Label companyNameLabel;
+        private System.Windows.Forms.TextBox companyName;
+        private System.Windows.Forms.TextBox companyUIC;
         private System.Windows.Forms.TabPage customerDetails;
-        private System.Windows.Forms.TextBox phoneInput;
-        private System.Windows.Forms.TextBox emailInput;
-        private System.Windows.Forms.Label phoneLabel;
-        private System.Windows.Forms.Label emailLabel;
+        private System.Windows.Forms.TextBox companyPhone;
+        private System.Windows.Forms.TextBox companyEmail;
+        private System.Windows.Forms.Label companyPhoneLabel;
+        private System.Windows.Forms.Label companyEmailLabel;
     }
 }
