@@ -30,6 +30,7 @@
         {
             this.searchParameters = new System.Windows.Forms.TabControl();
             this.customersTab = new System.Windows.Forms.TabPage();
+            this.addCreditButton = new System.Windows.Forms.Button();
             this.customersDatagridView = new System.Windows.Forms.DataGridView();
             this.customersSearchParameters = new System.Windows.Forms.RichTextBox();
             this.registerCorpoarateCustomers = new System.Windows.Forms.Button();
@@ -40,10 +41,10 @@
             this.creditProductSearchParameters = new System.Windows.Forms.RichTextBox();
             this.creditProductsDatagridView = new System.Windows.Forms.DataGridView();
             this.contractsTab = new System.Windows.Forms.TabPage();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.creditSearchParameters = new System.Windows.Forms.RichTextBox();
             this.addNewCreditButton = new System.Windows.Forms.Button();
             this.creditRegisterButton = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.credits = new System.Windows.Forms.DataGridView();
             this.CreditNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreditDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreditPeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,7 +58,7 @@
             this.creditProductsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.creditProductsDatagridView)).BeginInit();
             this.contractsTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.credits)).BeginInit();
             this.SuspendLayout();
             // 
             // searchParameters
@@ -68,14 +69,15 @@
             this.searchParameters.Controls.Add(this.exitTab);
             this.searchParameters.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.searchParameters.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.searchParameters.Location = new System.Drawing.Point(128, 68);
+            this.searchParameters.Location = new System.Drawing.Point(95, 68);
             this.searchParameters.Name = "searchParameters";
             this.searchParameters.SelectedIndex = 0;
-            this.searchParameters.Size = new System.Drawing.Size(898, 534);
+            this.searchParameters.Size = new System.Drawing.Size(956, 534);
             this.searchParameters.TabIndex = 1;
             // 
             // customersTab
             // 
+            this.customersTab.Controls.Add(this.addCreditButton);
             this.customersTab.Controls.Add(this.customersDatagridView);
             this.customersTab.Controls.Add(this.customersSearchParameters);
             this.customersTab.Controls.Add(this.registerCorpoarateCustomers);
@@ -84,17 +86,30 @@
             this.customersTab.Location = new System.Drawing.Point(4, 27);
             this.customersTab.Name = "customersTab";
             this.customersTab.Padding = new System.Windows.Forms.Padding(10);
-            this.customersTab.Size = new System.Drawing.Size(890, 503);
+            this.customersTab.Size = new System.Drawing.Size(948, 503);
             this.customersTab.TabIndex = 0;
             this.customersTab.Text = "Клиенти";
             this.customersTab.UseVisualStyleBackColor = true;
+            // 
+            // addCreditButton
+            // 
+            this.addCreditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addCreditButton.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addCreditButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.addCreditButton.Location = new System.Drawing.Point(396, 232);
+            this.addCreditButton.Name = "addCreditButton";
+            this.addCreditButton.Size = new System.Drawing.Size(167, 55);
+            this.addCreditButton.TabIndex = 5;
+            this.addCreditButton.Text = "Добави кредит";
+            this.addCreditButton.UseVisualStyleBackColor = true;
+            this.addCreditButton.Click += new System.EventHandler(this.addCreditButton_Click);
             // 
             // customersDatagridView
             // 
             this.customersDatagridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.customersDatagridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.customersDatagridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.customersDatagridView.Location = new System.Drawing.Point(13, 281);
+            this.customersDatagridView.Location = new System.Drawing.Point(37, 325);
             this.customersDatagridView.Name = "customersDatagridView";
             this.customersDatagridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.customersDatagridView.Size = new System.Drawing.Size(864, 150);
@@ -104,7 +119,7 @@
             // customersSearchParameters
             // 
             this.customersSearchParameters.Enabled = false;
-            this.customersSearchParameters.Location = new System.Drawing.Point(254, 134);
+            this.customersSearchParameters.Location = new System.Drawing.Point(257, 113);
             this.customersSearchParameters.Name = "customersSearchParameters";
             this.customersSearchParameters.Size = new System.Drawing.Size(424, 96);
             this.customersSearchParameters.TabIndex = 3;
@@ -115,7 +130,7 @@
             this.registerCorpoarateCustomers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.registerCorpoarateCustomers.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.registerCorpoarateCustomers.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.registerCorpoarateCustomers.Location = new System.Drawing.Point(591, 45);
+            this.registerCorpoarateCustomers.Location = new System.Drawing.Point(590, 32);
             this.registerCorpoarateCustomers.Name = "registerCorpoarateCustomers";
             this.registerCorpoarateCustomers.Size = new System.Drawing.Size(164, 55);
             this.registerCorpoarateCustomers.TabIndex = 1;
@@ -128,7 +143,7 @@
             this.registerIndividualCustomersButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.registerIndividualCustomersButton.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.registerIndividualCustomersButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.registerIndividualCustomersButton.Location = new System.Drawing.Point(168, 45);
+            this.registerIndividualCustomersButton.Location = new System.Drawing.Point(170, 32);
             this.registerIndividualCustomersButton.Name = "registerIndividualCustomersButton";
             this.registerIndividualCustomersButton.Size = new System.Drawing.Size(167, 55);
             this.registerIndividualCustomersButton.TabIndex = 0;
@@ -145,7 +160,7 @@
             this.creditProductsTab.Location = new System.Drawing.Point(4, 27);
             this.creditProductsTab.Name = "creditProductsTab";
             this.creditProductsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.creditProductsTab.Size = new System.Drawing.Size(890, 503);
+            this.creditProductsTab.Size = new System.Drawing.Size(948, 503);
             this.creditProductsTab.TabIndex = 1;
             this.creditProductsTab.Text = "Кредитни продукти";
             this.creditProductsTab.UseVisualStyleBackColor = true;
@@ -197,25 +212,25 @@
             // 
             // contractsTab
             // 
-            this.contractsTab.Controls.Add(this.richTextBox1);
+            this.contractsTab.Controls.Add(this.creditSearchParameters);
             this.contractsTab.Controls.Add(this.addNewCreditButton);
             this.contractsTab.Controls.Add(this.creditRegisterButton);
-            this.contractsTab.Controls.Add(this.dataGridView1);
+            this.contractsTab.Controls.Add(this.credits);
             this.contractsTab.Location = new System.Drawing.Point(4, 27);
             this.contractsTab.Name = "contractsTab";
             this.contractsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.contractsTab.Size = new System.Drawing.Size(890, 503);
+            this.contractsTab.Size = new System.Drawing.Size(948, 503);
             this.contractsTab.TabIndex = 2;
             this.contractsTab.Text = "Договори";
             this.contractsTab.UseVisualStyleBackColor = true;
             // 
-            // richTextBox1
+            // creditSearchParameters
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(235, 148);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(432, 123);
-            this.richTextBox1.TabIndex = 3;
-            this.richTextBox1.Text = "                                    Няма данни за търсене";
+            this.creditSearchParameters.Location = new System.Drawing.Point(235, 148);
+            this.creditSearchParameters.Name = "creditSearchParameters";
+            this.creditSearchParameters.Size = new System.Drawing.Size(432, 123);
+            this.creditSearchParameters.TabIndex = 3;
+            this.creditSearchParameters.Text = "                                    Няма данни за търсене";
             // 
             // addNewCreditButton
             // 
@@ -242,23 +257,24 @@
             this.creditRegisterButton.Text = "Регистър договори";
             this.creditRegisterButton.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // credits
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.credits.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.credits.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.credits.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CreditNumber,
             this.CreditDate,
             this.CreditPeriod,
             this.CreditStart,
             this.CreditEnd,
             this.Details});
-            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridView1.Location = new System.Drawing.Point(41, 314);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(814, 150);
-            this.dataGridView1.TabIndex = 0;
+            this.credits.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.credits.Location = new System.Drawing.Point(41, 314);
+            this.credits.Name = "credits";
+            this.credits.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.credits.Size = new System.Drawing.Size(814, 150);
+            this.credits.TabIndex = 0;
+            this.credits.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.credits_CellContentClick);
             // 
             // CreditNumber
             // 
@@ -296,7 +312,7 @@
             this.exitTab.Location = new System.Drawing.Point(4, 27);
             this.exitTab.Name = "exitTab";
             this.exitTab.Padding = new System.Windows.Forms.Padding(3);
-            this.exitTab.Size = new System.Drawing.Size(890, 503);
+            this.exitTab.Size = new System.Drawing.Size(948, 503);
             this.exitTab.TabIndex = 3;
             this.exitTab.Text = "Изход";
             this.exitTab.UseVisualStyleBackColor = true;
@@ -319,7 +335,7 @@
             this.creditProductsTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.creditProductsDatagridView)).EndInit();
             this.contractsTab.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.credits)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -338,17 +354,18 @@
         private System.Windows.Forms.RichTextBox creditProductSearchParameters;
         private System.Windows.Forms.Button newCreditProductButton;
         private System.Windows.Forms.Button creditProductsRegisterButton;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView credits;
         private System.Windows.Forms.DataGridView customersDatagridView;
         private System.Windows.Forms.Button addNewCreditButton;
         private System.Windows.Forms.Button creditRegisterButton;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox creditSearchParameters;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreditNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreditDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreditPeriod;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreditStart;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreditEnd;
         private System.Windows.Forms.DataGridViewButtonColumn Details;
+        private System.Windows.Forms.Button addCreditButton;
 
     }
 }

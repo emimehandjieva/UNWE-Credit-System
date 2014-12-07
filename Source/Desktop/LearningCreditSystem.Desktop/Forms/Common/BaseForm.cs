@@ -4,11 +4,17 @@
 
     public partial class BaseForm : Form
     {
-        public BaseForm()
+        protected  BaseForm()
         {
             this.InitializeComponent();
 
             // Font Settings
+        }
+
+        protected void ShowMessage(string caption, string message)
+        {
+            var buttons = MessageBoxButtons.OK;
+            MessageBox.Show(message, caption, buttons);
         }
     }
 }

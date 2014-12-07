@@ -4,8 +4,9 @@
     using LearningCreditSystem.Desktop.Common;
     using System.Drawing;
     using System.Windows.Forms;
+    using LearningCreditSystem.Desktop.Forms.Common;
 
-    public partial class LoginForm : Form
+    public partial class LoginForm : BaseForm
     {
         private const string UserName = "User";
         private const string Password = "123456";
@@ -35,11 +36,11 @@
             enterButton.ForeColor = Color.FromArgb(0, 0, 0);
         }
 
-        private void ShowMessage(string caption, string message)
-        {
-            var buttons = MessageBoxButtons.OK;
-            MessageBox.Show(message, caption, buttons);
-        }
+        //private void ShowMessage(string caption, string message)
+        //{
+        //    var buttons = MessageBoxButtons.OK;
+        //    MessageBox.Show(message, caption, buttons);
+        //}
 
         //protected override void OnPaint(PaintEventArgs e)
         //{
@@ -58,7 +59,7 @@
 
             if (userNameEntered.Equals(UserName) && passwordEntered.Equals(Password))
             {
-                ShowMessage(SuccessfulLoginCaption, SuccessfulLoginMessage);
+                base.ShowMessage(SuccessfulLoginCaption, SuccessfulLoginMessage);
                 var mainScreen = new MainScreen();
                 this.Hide();
                 mainScreen.ShowDialog();
@@ -66,7 +67,7 @@
             }
             else
             {
-                ShowMessage(ForbidenAccessCaption, ForbidenAccessMessage);
+                base.ShowMessage(ForbidenAccessCaption, ForbidenAccessMessage);
             }
         }
     }

@@ -4,8 +4,9 @@
     using System.Drawing;
     using System.Windows.Forms;
     using LearningCreditSystem.Desktop.Common;
+    using LearningCreditSystem.Desktop.Forms.Common;
 
-    public partial class MainScreen : Form
+    public partial class MainScreen : BaseForm
     {
         private static string[] individualCustomersColumnNames = {"ЕГН", "Име", "Фамилия", "Имейл", "Телефон"};
         private static string[] corporateCustomersColumnNames = {"БУЛСТАТ", "Фирма", "Имейл", "Телефон"};
@@ -22,18 +23,26 @@
             creditProductsTab.BackColor = ColorFactory.GetColor(ProjectColor.LightGrey);
             contractsTab.BackColor = ColorFactory.GetColor(ProjectColor.LightGrey);
 
+            // Customers tab
             registerCorpoarateCustomers.BackColor = ColorFactory.GetColor(ProjectColor.DarkGrey);
             registerCorpoarateCustomers.ForeColor = Color.Black;
             registerIndividualCustomersButton.BackColor = ColorFactory.GetColor(ProjectColor.DarkGrey);
             registerIndividualCustomersButton.ForeColor = Color.Black;
+            addCreditButton.BackColor = ColorFactory.GetColor(ProjectColor.DarkGrey);
+            addCreditButton.ForeColor = Color.Black;
+
+            // Credit products tab
             creditProductsRegisterButton.BackColor = ColorFactory.GetColor(ProjectColor.DarkGrey);
             creditProductsRegisterButton.ForeColor = Color.Black;
             newCreditProductButton.BackColor = ColorFactory.GetColor(ProjectColor.DarkGrey);
             newCreditProductButton.ForeColor = Color.Black;
+
+            // Credits tab
             creditRegisterButton.BackColor = ColorFactory.GetColor(ProjectColor.DarkGrey);
             creditRegisterButton.ForeColor = Color.Black;
             addNewCreditButton.BackColor = ColorFactory.GetColor(ProjectColor.DarkGrey);
             addNewCreditButton.ForeColor = Color.Black;
+
         }
 
         public static string SearchParameteres { get; set; }
@@ -127,6 +136,30 @@
         {
             var newCreditForm = new AddNewCredit();
             newCreditForm.Show();
+        }
+
+        private void addCreditButton_Click(object sender, System.EventArgs e)
+        {
+            bool hasCustomers = customersDatagridView.Rows.Count > 0;
+            bool hasSelectedCustomer = customersDatagridView.SelectedRows.Count > 0;
+            if (!hasCustomers)
+            {
+                base.ShowMessage("No customers", "Please search for customers before add new credit");
+            }
+            else if (!hasSelectedCustomer)
+            {
+                base.ShowMessage("No customers", "Please select a customer before add new credit");
+            }
+            else
+            {
+                AddNewCredit newCreditForm = new AddNewCredit();
+                newCreditForm.ShowDialog();
+            }
+        }
+
+        private void credits_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            base.ShowMessage("", "Clicked");
         }
     }
 }
