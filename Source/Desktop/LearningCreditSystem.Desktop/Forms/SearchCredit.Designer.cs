@@ -1,6 +1,6 @@
 ﻿namespace LearningCreditSystem.Desktop.Forms
 {
-    partial class Test
+    partial class SearchCredit
     {
         /// <summary>
         /// Required designer variable.
@@ -28,31 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.wrapper = new System.Windows.Forms.Panel();
-            this.SuspendLayout();
-            // 
-            // wrapper
-            // 
-            this.wrapper.BackColor = System.Drawing.Color.Transparent;
-            this.wrapper.Location = new System.Drawing.Point(56, 28);
-            this.wrapper.Name = "wrapper";
-            this.wrapper.Size = new System.Drawing.Size(742, 438);
-            this.wrapper.TabIndex = 4;
-            // 
-            // Test
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(859, 499);
-            this.Controls.Add(this.wrapper);
-            this.Name = "Test";
-            this.Text = "Test";
-            this.ResumeLayout(false);
-
+            this.Text = "SearchCredit";
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel wrapper;
     }
 }

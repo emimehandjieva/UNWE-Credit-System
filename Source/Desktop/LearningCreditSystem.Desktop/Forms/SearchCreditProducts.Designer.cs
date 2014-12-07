@@ -31,25 +31,25 @@
             this.searchButton = new System.Windows.Forms.Button();
             this.searchPanel = new System.Windows.Forms.TabControl();
             this.customerMainData = new System.Windows.Forms.TabPage();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.PINLabel = new System.Windows.Forms.Label();
+            this.productStatus = new System.Windows.Forms.ComboBox();
+            this.productStatusLabel = new System.Windows.Forms.Label();
             this.productCodeLabel = new System.Windows.Forms.Label();
-            this.customerLastName = new System.Windows.Forms.TextBox();
-            this.customerFirstName = new System.Windows.Forms.TextBox();
+            this.productNameLabel = new System.Windows.Forms.Label();
+            this.productName = new System.Windows.Forms.TextBox();
+            this.productCode = new System.Windows.Forms.TextBox();
             this.customerDetails = new System.Windows.Forms.TabPage();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.emailInput = new System.Windows.Forms.TextBox();
-            this.minimalInterestRateLabel = new System.Windows.Forms.Label();
-            this.phoneInput = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.minimumSum = new System.Windows.Forms.TextBox();
+            this.minimumSumLabel = new System.Windows.Forms.Label();
+            this.maximumSumLabel = new System.Windows.Forms.Label();
+            this.maximumTerm = new System.Windows.Forms.TextBox();
+            this.minimumTerm = new System.Windows.Forms.TextBox();
+            this.maximumSum = new System.Windows.Forms.TextBox();
+            this.maximumTermLabel = new System.Windows.Forms.Label();
+            this.maximumInterestRate = new System.Windows.Forms.TextBox();
+            this.minimumTermLabel = new System.Windows.Forms.Label();
+            this.maximumIntRateerestLabel = new System.Windows.Forms.Label();
+            this.minimumInterestRate = new System.Windows.Forms.TextBox();
+            this.minimumInterestRateLabel = new System.Windows.Forms.Label();
             this.searchPanel.SuspendLayout();
             this.customerMainData.SuspendLayout();
             this.customerDetails.SuspendLayout();
@@ -66,6 +66,7 @@
             this.searchButton.TabIndex = 5;
             this.searchButton.Text = "Търси";
             this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // searchPanel
             // 
@@ -80,87 +81,87 @@
             // 
             // customerMainData
             // 
-            this.customerMainData.Controls.Add(this.comboBox1);
-            this.customerMainData.Controls.Add(this.label1);
-            this.customerMainData.Controls.Add(this.PINLabel);
+            this.customerMainData.Controls.Add(this.productStatus);
+            this.customerMainData.Controls.Add(this.productStatusLabel);
             this.customerMainData.Controls.Add(this.productCodeLabel);
-            this.customerMainData.Controls.Add(this.customerLastName);
-            this.customerMainData.Controls.Add(this.customerFirstName);
+            this.customerMainData.Controls.Add(this.productNameLabel);
+            this.customerMainData.Controls.Add(this.productName);
+            this.customerMainData.Controls.Add(this.productCode);
             this.customerMainData.Location = new System.Drawing.Point(4, 27);
             this.customerMainData.Name = "customerMainData";
             this.customerMainData.Padding = new System.Windows.Forms.Padding(3);
-            this.customerMainData.Size = new System.Drawing.Size(651, 232);
+            this.customerMainData.Size = new System.Drawing.Size(651, 283);
             this.customerMainData.TabIndex = 0;
             this.customerMainData.Text = "Основни данни";
             this.customerMainData.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // productStatus
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.productStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.productStatus.FormattingEnabled = true;
+            this.productStatus.Items.AddRange(new object[] {
             "Активен",
             "Неактивен"});
-            this.comboBox1.Location = new System.Drawing.Point(321, 150);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(161, 26);
-            this.comboBox1.TabIndex = 7;
+            this.productStatus.Location = new System.Drawing.Point(321, 150);
+            this.productStatus.Name = "productStatus";
+            this.productStatus.Size = new System.Drawing.Size(161, 26);
+            this.productStatus.TabIndex = 7;
             // 
-            // label1
+            // productStatusLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(140, 154);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 18);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Статус";
-            // 
-            // PINLabel
-            // 
-            this.PINLabel.AutoSize = true;
-            this.PINLabel.Location = new System.Drawing.Point(140, 32);
-            this.PINLabel.Name = "PINLabel";
-            this.PINLabel.Size = new System.Drawing.Size(36, 18);
-            this.PINLabel.TabIndex = 5;
-            this.PINLabel.Text = "Код";
+            this.productStatusLabel.AutoSize = true;
+            this.productStatusLabel.Location = new System.Drawing.Point(140, 154);
+            this.productStatusLabel.Name = "productStatusLabel";
+            this.productStatusLabel.Size = new System.Drawing.Size(58, 18);
+            this.productStatusLabel.TabIndex = 6;
+            this.productStatusLabel.Text = "Статус";
             // 
             // productCodeLabel
             // 
             this.productCodeLabel.AutoSize = true;
-            this.productCodeLabel.Location = new System.Drawing.Point(140, 87);
+            this.productCodeLabel.Location = new System.Drawing.Point(140, 32);
             this.productCodeLabel.Name = "productCodeLabel";
-            this.productCodeLabel.Size = new System.Drawing.Size(114, 18);
-            this.productCodeLabel.TabIndex = 3;
-            this.productCodeLabel.Text = "Наименование";
+            this.productCodeLabel.Size = new System.Drawing.Size(36, 18);
+            this.productCodeLabel.TabIndex = 5;
+            this.productCodeLabel.Text = "Код";
             // 
-            // customerLastName
+            // productNameLabel
             // 
-            this.customerLastName.Location = new System.Drawing.Point(321, 84);
-            this.customerLastName.Name = "customerLastName";
-            this.customerLastName.Size = new System.Drawing.Size(161, 26);
-            this.customerLastName.TabIndex = 1;
+            this.productNameLabel.AutoSize = true;
+            this.productNameLabel.Location = new System.Drawing.Point(140, 87);
+            this.productNameLabel.Name = "productNameLabel";
+            this.productNameLabel.Size = new System.Drawing.Size(114, 18);
+            this.productNameLabel.TabIndex = 3;
+            this.productNameLabel.Text = "Наименование";
             // 
-            // customerFirstName
+            // productName
             // 
-            this.customerFirstName.Location = new System.Drawing.Point(321, 32);
-            this.customerFirstName.Name = "customerFirstName";
-            this.customerFirstName.Size = new System.Drawing.Size(161, 26);
-            this.customerFirstName.TabIndex = 0;
+            this.productName.Location = new System.Drawing.Point(321, 84);
+            this.productName.Name = "productName";
+            this.productName.Size = new System.Drawing.Size(161, 26);
+            this.productName.TabIndex = 1;
+            // 
+            // productCode
+            // 
+            this.productCode.Location = new System.Drawing.Point(321, 32);
+            this.productCode.Name = "productCode";
+            this.productCode.Size = new System.Drawing.Size(161, 26);
+            this.productCode.TabIndex = 0;
             // 
             // customerDetails
             // 
-            this.customerDetails.Controls.Add(this.textBox4);
-            this.customerDetails.Controls.Add(this.label6);
-            this.customerDetails.Controls.Add(this.label5);
-            this.customerDetails.Controls.Add(this.textBox3);
-            this.customerDetails.Controls.Add(this.textBox2);
-            this.customerDetails.Controls.Add(this.phoneInput);
-            this.customerDetails.Controls.Add(this.label4);
-            this.customerDetails.Controls.Add(this.textBox1);
-            this.customerDetails.Controls.Add(this.label3);
-            this.customerDetails.Controls.Add(this.label2);
-            this.customerDetails.Controls.Add(this.emailInput);
-            this.customerDetails.Controls.Add(this.minimalInterestRateLabel);
+            this.customerDetails.Controls.Add(this.minimumSum);
+            this.customerDetails.Controls.Add(this.minimumSumLabel);
+            this.customerDetails.Controls.Add(this.maximumSumLabel);
+            this.customerDetails.Controls.Add(this.maximumTerm);
+            this.customerDetails.Controls.Add(this.minimumTerm);
+            this.customerDetails.Controls.Add(this.maximumSum);
+            this.customerDetails.Controls.Add(this.maximumTermLabel);
+            this.customerDetails.Controls.Add(this.maximumInterestRate);
+            this.customerDetails.Controls.Add(this.minimumTermLabel);
+            this.customerDetails.Controls.Add(this.maximumIntRateerestLabel);
+            this.customerDetails.Controls.Add(this.minimumInterestRate);
+            this.customerDetails.Controls.Add(this.minimumInterestRateLabel);
             this.customerDetails.Location = new System.Drawing.Point(4, 27);
             this.customerDetails.Name = "customerDetails";
             this.customerDetails.Padding = new System.Windows.Forms.Padding(3);
@@ -169,101 +170,101 @@
             this.customerDetails.Text = "Детайли";
             this.customerDetails.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // minimumSum
             // 
-            this.textBox2.Location = new System.Drawing.Point(429, 101);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(86, 26);
-            this.textBox2.TabIndex = 8;
+            this.minimumSum.Location = new System.Drawing.Point(429, 193);
+            this.minimumSum.Name = "minimumSum";
+            this.minimumSum.Size = new System.Drawing.Size(86, 26);
+            this.minimumSum.TabIndex = 12;
             // 
-            // label4
+            // minimumSumLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(169, 142);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(169, 18);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Максимална срочност";
+            this.minimumSumLabel.AutoSize = true;
+            this.minimumSumLabel.Location = new System.Drawing.Point(169, 196);
+            this.minimumSumLabel.Name = "minimumSumLabel";
+            this.minimumSumLabel.Size = new System.Drawing.Size(202, 18);
+            this.minimumSumLabel.TabIndex = 11;
+            this.minimumSumLabel.Text = "Минимална изискана сума";
             // 
-            // textBox1
+            // maximumSumLabel
             // 
-            this.textBox1.Location = new System.Drawing.Point(429, 57);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(86, 26);
-            this.textBox1.TabIndex = 6;
+            this.maximumSumLabel.AutoSize = true;
+            this.maximumSumLabel.Location = new System.Drawing.Point(169, 237);
+            this.maximumSumLabel.Name = "maximumSumLabel";
+            this.maximumSumLabel.Size = new System.Drawing.Size(208, 18);
+            this.maximumSumLabel.TabIndex = 10;
+            this.maximumSumLabel.Text = "Максимална изискана сума";
             // 
-            // label3
+            // maximumTerm
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(169, 104);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(163, 18);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Минимална срочност";
+            this.maximumTerm.Location = new System.Drawing.Point(429, 139);
+            this.maximumTerm.Name = "maximumTerm";
+            this.maximumTerm.Size = new System.Drawing.Size(86, 26);
+            this.maximumTerm.TabIndex = 9;
             // 
-            // label2
+            // minimumTerm
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(169, 65);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(220, 18);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Максимален лихвен процент";
+            this.minimumTerm.Location = new System.Drawing.Point(429, 101);
+            this.minimumTerm.Name = "minimumTerm";
+            this.minimumTerm.Size = new System.Drawing.Size(86, 26);
+            this.minimumTerm.TabIndex = 8;
             // 
-            // emailInput
+            // maximumSum
             // 
-            this.emailInput.Location = new System.Drawing.Point(429, 14);
-            this.emailInput.Name = "emailInput";
-            this.emailInput.Size = new System.Drawing.Size(86, 26);
-            this.emailInput.TabIndex = 2;
+            this.maximumSum.Location = new System.Drawing.Point(429, 234);
+            this.maximumSum.Name = "maximumSum";
+            this.maximumSum.Size = new System.Drawing.Size(86, 26);
+            this.maximumSum.TabIndex = 3;
             // 
-            // minimalInterestRateLabel
+            // maximumTermLabel
             // 
-            this.minimalInterestRateLabel.AutoSize = true;
-            this.minimalInterestRateLabel.Location = new System.Drawing.Point(169, 22);
-            this.minimalInterestRateLabel.Name = "minimalInterestRateLabel";
-            this.minimalInterestRateLabel.Size = new System.Drawing.Size(214, 18);
-            this.minimalInterestRateLabel.TabIndex = 0;
-            this.minimalInterestRateLabel.Text = "Минимален лихвен процент";
+            this.maximumTermLabel.AutoSize = true;
+            this.maximumTermLabel.Location = new System.Drawing.Point(169, 142);
+            this.maximumTermLabel.Name = "maximumTermLabel";
+            this.maximumTermLabel.Size = new System.Drawing.Size(169, 18);
+            this.maximumTermLabel.TabIndex = 7;
+            this.maximumTermLabel.Text = "Максимална срочност";
             // 
-            // phoneInput
+            // maximumInterestRate
             // 
-            this.phoneInput.Location = new System.Drawing.Point(429, 185);
-            this.phoneInput.Name = "phoneInput";
-            this.phoneInput.Size = new System.Drawing.Size(86, 26);
-            this.phoneInput.TabIndex = 3;
+            this.maximumInterestRate.Location = new System.Drawing.Point(429, 57);
+            this.maximumInterestRate.Name = "maximumInterestRate";
+            this.maximumInterestRate.Size = new System.Drawing.Size(86, 26);
+            this.maximumInterestRate.TabIndex = 6;
             // 
-            // textBox3
+            // minimumTermLabel
             // 
-            this.textBox3.Location = new System.Drawing.Point(429, 139);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(86, 26);
-            this.textBox3.TabIndex = 9;
+            this.minimumTermLabel.AutoSize = true;
+            this.minimumTermLabel.Location = new System.Drawing.Point(169, 104);
+            this.minimumTermLabel.Name = "minimumTermLabel";
+            this.minimumTermLabel.Size = new System.Drawing.Size(163, 18);
+            this.minimumTermLabel.TabIndex = 5;
+            this.minimumTermLabel.Text = "Минимална срочност";
             // 
-            // label5
+            // maximumIntRateerestLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(169, 188);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(208, 18);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Максимална изискана сума";
+            this.maximumIntRateerestLabel.AutoSize = true;
+            this.maximumIntRateerestLabel.Location = new System.Drawing.Point(169, 65);
+            this.maximumIntRateerestLabel.Name = "maximumIntRateerestLabel";
+            this.maximumIntRateerestLabel.Size = new System.Drawing.Size(220, 18);
+            this.maximumIntRateerestLabel.TabIndex = 4;
+            this.maximumIntRateerestLabel.Text = "Максимален лихвен процент";
             // 
-            // label6
+            // minimumInterestRate
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(169, 234);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(202, 18);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Минимална изискана сума";
+            this.minimumInterestRate.Location = new System.Drawing.Point(429, 14);
+            this.minimumInterestRate.Name = "minimumInterestRate";
+            this.minimumInterestRate.Size = new System.Drawing.Size(86, 26);
+            this.minimumInterestRate.TabIndex = 2;
             // 
-            // textBox4
+            // minimumInterestRateLabel
             // 
-            this.textBox4.Location = new System.Drawing.Point(429, 226);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(86, 26);
-            this.textBox4.TabIndex = 12;
+            this.minimumInterestRateLabel.AutoSize = true;
+            this.minimumInterestRateLabel.Location = new System.Drawing.Point(169, 22);
+            this.minimumInterestRateLabel.Name = "minimumInterestRateLabel";
+            this.minimumInterestRateLabel.Size = new System.Drawing.Size(214, 18);
+            this.minimumInterestRateLabel.TabIndex = 0;
+            this.minimumInterestRateLabel.Text = "Минимален лихвен процент";
             // 
             // SearchCreditProducts
             // 
@@ -291,24 +292,24 @@
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.TabControl searchPanel;
         private System.Windows.Forms.TabPage customerMainData;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label PINLabel;
+        private System.Windows.Forms.ComboBox productStatus;
+        private System.Windows.Forms.Label productStatusLabel;
         private System.Windows.Forms.Label productCodeLabel;
-        private System.Windows.Forms.TextBox customerLastName;
-        private System.Windows.Forms.TextBox customerFirstName;
+        private System.Windows.Forms.Label productNameLabel;
+        private System.Windows.Forms.TextBox productName;
+        private System.Windows.Forms.TextBox productCode;
         private System.Windows.Forms.TabPage customerDetails;
-        private System.Windows.Forms.TextBox phoneInput;
-        private System.Windows.Forms.TextBox emailInput;
-        private System.Windows.Forms.Label minimalInterestRateLabel;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox maximumSum;
+        private System.Windows.Forms.TextBox minimumInterestRate;
+        private System.Windows.Forms.Label minimumInterestRateLabel;
+        private System.Windows.Forms.TextBox minimumTerm;
+        private System.Windows.Forms.Label maximumTermLabel;
+        private System.Windows.Forms.TextBox maximumInterestRate;
+        private System.Windows.Forms.Label minimumTermLabel;
+        private System.Windows.Forms.Label maximumIntRateerestLabel;
+        private System.Windows.Forms.TextBox maximumTerm;
+        private System.Windows.Forms.TextBox minimumSum;
+        private System.Windows.Forms.Label minimumSumLabel;
+        private System.Windows.Forms.Label maximumSumLabel;
     }
 }

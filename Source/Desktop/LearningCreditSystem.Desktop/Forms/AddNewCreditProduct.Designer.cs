@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.searchButton = new System.Windows.Forms.Button();
+            this.addNewProductButton = new System.Windows.Forms.Button();
             this.searchPanel = new System.Windows.Forms.TabControl();
             this.customerMainData = new System.Windows.Forms.TabPage();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -53,17 +53,17 @@
             this.customerDetails.SuspendLayout();
             this.SuspendLayout();
             // 
-            // searchButton
+            // addNewProductButton
             // 
-            this.searchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.searchButton.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.searchButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.searchButton.Location = new System.Drawing.Point(318, 384);
-            this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(227, 57);
-            this.searchButton.TabIndex = 7;
-            this.searchButton.Text = "Добави";
-            this.searchButton.UseVisualStyleBackColor = true;
+            this.addNewProductButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addNewProductButton.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addNewProductButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.addNewProductButton.Location = new System.Drawing.Point(318, 384);
+            this.addNewProductButton.Name = "addNewProductButton";
+            this.addNewProductButton.Size = new System.Drawing.Size(227, 57);
+            this.addNewProductButton.TabIndex = 7;
+            this.addNewProductButton.Text = "Добави";
+            this.addNewProductButton.UseVisualStyleBackColor = true;
             // 
             // searchPanel
             // 
@@ -252,7 +252,7 @@
             this.BackgroundImage = global::LearningCreditSystem.Desktop.Properties.Resources.BusinessBackground;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(820, 497);
-            this.Controls.Add(this.searchButton);
+            this.Controls.Add(this.addNewProductButton);
             this.Controls.Add(this.searchPanel);
             this.DoubleBuffered = true;
             this.Name = "AddNewCreditProduct";
@@ -268,7 +268,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button searchButton;
+        private System.Windows.Forms.Button addNewProductButton;
         private System.Windows.Forms.TabControl searchPanel;
         private System.Windows.Forms.TabPage customerMainData;
         private System.Windows.Forms.ComboBox comboBox1;

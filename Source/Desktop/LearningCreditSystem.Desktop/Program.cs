@@ -1,6 +1,4 @@
-﻿using LearningCreditSystem.Desktop.Common;
-
-namespace LearningCreditSystem.Desktop
+﻿namespace LearningCreditSystem.Desktop
 {
     using System;
     using System.Windows.Forms;

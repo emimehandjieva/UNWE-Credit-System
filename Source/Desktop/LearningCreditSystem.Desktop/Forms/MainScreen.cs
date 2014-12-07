@@ -9,11 +9,13 @@
     {
         private static string[] individualCustomersColumnNames = {"ЕГН", "Име", "Фамилия", "Имейл", "Телефон"};
         private static string[] corporateCustomersColumnNames = {"БУЛСТАТ", "Фирма", "Имейл", "Телефон"};
+        private static string[] creditProductColumnNames = 
+            { "Код на продукт", "Име на продукт", "Статус", "Минимален лихвен процент", 
+                "Максимален лихвен процент", "Минимална срочност", "Максимална срочност", "Минимална сума", "Максимална сума" };
 
         public MainScreen()
         {
             InitializeComponent();
-            // tabContainer.SelectedTab = creditProductsTab; // Useful works - use it later
 
             // All tabs
             customersTab.BackColor = ColorFactory.GetColor(ProjectColor.LightGrey);
@@ -28,6 +30,10 @@
             creditProductsRegisterButton.ForeColor = Color.Black;
             newCreditProductButton.BackColor = ColorFactory.GetColor(ProjectColor.DarkGrey);
             newCreditProductButton.ForeColor = Color.Black;
+            creditRegisterButton.BackColor = ColorFactory.GetColor(ProjectColor.DarkGrey);
+            creditRegisterButton.ForeColor = Color.Black;
+            addNewCreditButton.BackColor = ColorFactory.GetColor(ProjectColor.DarkGrey);
+            addNewCreditButton.ForeColor = Color.Black;
         }
 
         public static string SearchParameteres { get; set; }
@@ -36,62 +42,66 @@
 
         public static List<string[]> DataToBeDisplayed { get; set; }
 
-        private void FillSearchParametersField()
+        private void FillSearchParametersField(RichTextBox searchParametersField)
         {
             searchParametersField.Text = SearchParameteres;
         }
 
-        private void SetColumnNames()
+        private void SetColumnNames(DataGridView dataGridView)
         {
-            ClearDatagridView();
+            ClearDatagridView(dataGridView);
 
             int columnsCount = CurrentColumnNames.Length;
-            customersDatagridView.ColumnCount = columnsCount;
+            dataGridView.ColumnCount = columnsCount;
 
             for (int column = 0; column < columnsCount; column++)
             {
-                customersDatagridView.Columns[column].Name = CurrentColumnNames[column];
+                dataGridView.Columns[column].Name = CurrentColumnNames[column];
             }
         }
 
-        private void DisplayData()
+        private void DisplayData(DataGridView dataGridView)
         {
             foreach (var row in DataToBeDisplayed)
             {
-                customersDatagridView.Rows.Add(row);
+                dataGridView.Rows.Add(row);
             }
         }
 
-        private void ClearDatagridView()
+        private void ClearDatagridView(DataGridView dataGridView)
         {
-            customersDatagridView.Rows.Clear();
-            customersDatagridView.Columns.Clear();
+            dataGridView.Rows.Clear();
+            dataGridView.Columns.Clear();
         }
 
         private void registerIndividualCustomers_Click(object sender, System.EventArgs e)
         {
             var searchForm = new SearchIndividualCustomers();
             searchForm.ShowDialog();
-            FillSearchParametersField();
+            FillSearchParametersField(customersSearchParameters);
             CurrentColumnNames = individualCustomersColumnNames;
-            SetColumnNames();
-            DisplayData();
+            SetColumnNames(customersDatagridView);
+            DisplayData(customersDatagridView);
         }
 
         private void registerCorporateCustomers_Click(object sender, System.EventArgs e)
         {
             var searchForm = new SearchCorporateCustomers();
             searchForm.ShowDialog();
-            FillSearchParametersField();
+            FillSearchParametersField(customersSearchParameters);
             CurrentColumnNames = corporateCustomersColumnNames;
-            SetColumnNames();
-            DisplayData();
+            SetColumnNames(customersDatagridView);
+            DisplayData(customersDatagridView);
         }
 
         private void creditProductsRegisterButton_Click(object sender, System.EventArgs e)
         {
             var searchForm = new SearchCreditProducts();
             searchForm.ShowDialog();
+            FillSearchParametersField(creditProductSearchParameters);
+            CurrentColumnNames = creditProductColumnNames;
+            SetColumnNames(creditProductsDatagridView);
+            DisplayData(creditProductsDatagridView);
         }
 
         private void newCreditProductButton_Click(object sender, System.EventArgs e)
@@ -111,6 +121,12 @@
             string[] customerData = customerDataList.ToArray();
             var editForm = new EditCustomerсInformation(CurrentColumnNames, customerData);
             editForm.ShowDialog();
+        }
+
+        private void addNewCreditButton_Click(object sender, System.EventArgs e)
+        {
+            var newCreditForm = new AddNewCredit();
+            newCreditForm.Show();
         }
     }
 }
