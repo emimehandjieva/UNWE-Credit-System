@@ -1,5 +1,7 @@
 ﻿namespace LearningCreditSystem.Desktop.Forms
 {
+    using System;
+    using System.Text;
     using LearningCreditSystem.Desktop.Common;
     using System.Collections.Generic;
     using System.Drawing;
@@ -26,6 +28,22 @@
             string PIN = customerPIN.Text;
             string email = customerEmail.Text;
             string phone = customerPhone.Text;
+            var searchParameters = new Dictionary<string, string>()
+            {
+                {"Име", firstName},
+                {"Фамилия", lastName},
+                {"ЕГН", PIN},
+                {"Имейл", email},
+                {"Телефон", phone}
+
+            };
+            var searchParametersStringBuilder = new StringBuilder();
+
+            foreach (var parameter in searchParameters)
+            {
+                searchParametersStringBuilder.Append(parameter.Key + ": " + parameter.Value);
+                searchParametersStringBuilder.Append(Environment.NewLine);
+            }
 
             // Retieve information and pass it to the main form to be displayed
             // Data from database search
@@ -40,7 +58,8 @@
             // This way we allow the user to see all search parameters used in the query
             // Sample format : "<Parameter Name> : <Value>"
             //                   Име: Мария
-            MainScreen.SearchParameteres = "These are the results from individual customers search";
+            MainScreen.SearchParameteres = searchParametersStringBuilder.ToString();
+
             this.Close();
         }
     }

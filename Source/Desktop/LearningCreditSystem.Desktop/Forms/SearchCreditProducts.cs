@@ -1,8 +1,10 @@
 ﻿namespace LearningCreditSystem.Desktop.Forms
 {
     using LearningCreditSystem.Desktop.Common;
+    using System;
     using System.Collections.Generic;
     using System.Drawing;
+    using System.Text;
     using System.Windows.Forms;
 
     public partial class SearchCreditProducts : Form
@@ -27,6 +29,25 @@
             string creditProductMaximumTerm = maximumTerm.Text;
             string creditPeoductMinimumSum = minimumSum.Text;
             string creditProductMaximumSum = maximumSum.Text;
+            var searchParameters = new Dictionary<string, string>()
+            {
+                {"Код на продект", creditProductCode},
+                {"Име на продукт", creditProductName},
+                {"Статус", creditProductStatus},
+                {"Минимален лихвен процент", creditProductMinimalInterestRate},
+                {"Максимален лихвен процент", creditProductMaximalInterestRate},
+                {"Минимална срочност", creditPeoductMinimumSum},
+                {"Максимална срочност", creditProductMaximumSum},
+                {"Минимална сума", creditProductMinimumTerm},
+                {"Максимална сума", creditProductMaximumTerm}
+            };
+            var searchParametersStringBuilder = new StringBuilder();
+
+            foreach (var parameter in searchParameters)
+            {
+                searchParametersStringBuilder.Append(parameter.Key + ": " + parameter.Value);
+                searchParametersStringBuilder.Append(Environment.NewLine);
+            }
 
             // Retieve information and pass it to the main form to be displayed
             // Data from database search
@@ -41,7 +62,7 @@
             // This way we allow the user to see all search parameters used in the query
             // Sample format : "<Parameter Name> : <Value>"
             //                   Име на кредитен продукт: Име
-            MainScreen.SearchParameteres = "These are the results from credit product search search";
+            MainScreen.SearchParameteres = searchParametersStringBuilder.ToString();
             this.Close();
         }
 

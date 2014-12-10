@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.searchParameters = new System.Windows.Forms.TabControl();
+            this.tabsContainer = new System.Windows.Forms.TabControl();
             this.customersTab = new System.Windows.Forms.TabPage();
             this.addCreditButton = new System.Windows.Forms.Button();
             this.customersDatagridView = new System.Windows.Forms.DataGridView();
@@ -52,7 +52,7 @@
             this.CreditEnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Details = new System.Windows.Forms.DataGridViewButtonColumn();
             this.exitTab = new System.Windows.Forms.TabPage();
-            this.searchParameters.SuspendLayout();
+            this.tabsContainer.SuspendLayout();
             this.customersTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.customersDatagridView)).BeginInit();
             this.creditProductsTab.SuspendLayout();
@@ -61,19 +61,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.credits)).BeginInit();
             this.SuspendLayout();
             // 
-            // searchParameters
+            // tabsContainer
             // 
-            this.searchParameters.Controls.Add(this.customersTab);
-            this.searchParameters.Controls.Add(this.creditProductsTab);
-            this.searchParameters.Controls.Add(this.contractsTab);
-            this.searchParameters.Controls.Add(this.exitTab);
-            this.searchParameters.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.searchParameters.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.searchParameters.Location = new System.Drawing.Point(95, 68);
-            this.searchParameters.Name = "searchParameters";
-            this.searchParameters.SelectedIndex = 0;
-            this.searchParameters.Size = new System.Drawing.Size(956, 534);
-            this.searchParameters.TabIndex = 1;
+            this.tabsContainer.Controls.Add(this.customersTab);
+            this.tabsContainer.Controls.Add(this.creditProductsTab);
+            this.tabsContainer.Controls.Add(this.contractsTab);
+            this.tabsContainer.Controls.Add(this.exitTab);
+            this.tabsContainer.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tabsContainer.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.tabsContainer.Location = new System.Drawing.Point(95, 68);
+            this.tabsContainer.Name = "tabsContainer";
+            this.tabsContainer.SelectedIndex = 0;
+            this.tabsContainer.Size = new System.Drawing.Size(956, 534);
+            this.tabsContainer.TabIndex = 1;
             // 
             // customersTab
             // 
@@ -118,9 +118,9 @@
             // 
             // customersSearchParameters
             // 
-            this.customersSearchParameters.Enabled = false;
             this.customersSearchParameters.Location = new System.Drawing.Point(257, 113);
             this.customersSearchParameters.Name = "customersSearchParameters";
+            this.customersSearchParameters.ReadOnly = true;
             this.customersSearchParameters.Size = new System.Drawing.Size(424, 96);
             this.customersSearchParameters.TabIndex = 3;
             this.customersSearchParameters.Text = "                                   Няма данни за търсене";
@@ -170,7 +170,7 @@
             this.newCreditProductButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.newCreditProductButton.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.newCreditProductButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.newCreditProductButton.Location = new System.Drawing.Point(524, 42);
+            this.newCreditProductButton.Location = new System.Drawing.Point(582, 42);
             this.newCreditProductButton.Name = "newCreditProductButton";
             this.newCreditProductButton.Size = new System.Drawing.Size(167, 55);
             this.newCreditProductButton.TabIndex = 5;
@@ -183,7 +183,7 @@
             this.creditProductsRegisterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.creditProductsRegisterButton.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.creditProductsRegisterButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.creditProductsRegisterButton.Location = new System.Drawing.Point(129, 42);
+            this.creditProductsRegisterButton.Location = new System.Drawing.Point(206, 42);
             this.creditProductsRegisterButton.Name = "creditProductsRegisterButton";
             this.creditProductsRegisterButton.Size = new System.Drawing.Size(167, 55);
             this.creditProductsRegisterButton.TabIndex = 4;
@@ -193,7 +193,7 @@
             // 
             // creditProductSearchParameters
             // 
-            this.creditProductSearchParameters.Location = new System.Drawing.Point(169, 139);
+            this.creditProductSearchParameters.Location = new System.Drawing.Point(243, 143);
             this.creditProductSearchParameters.Name = "creditProductSearchParameters";
             this.creditProductSearchParameters.Size = new System.Drawing.Size(476, 137);
             this.creditProductSearchParameters.TabIndex = 3;
@@ -204,11 +204,12 @@
             this.creditProductsDatagridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.creditProductsDatagridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.creditProductsDatagridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.creditProductsDatagridView.Location = new System.Drawing.Point(18, 299);
+            this.creditProductsDatagridView.Location = new System.Drawing.Point(6, 299);
             this.creditProductsDatagridView.Name = "creditProductsDatagridView";
             this.creditProductsDatagridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.creditProductsDatagridView.Size = new System.Drawing.Size(846, 176);
+            this.creditProductsDatagridView.Size = new System.Drawing.Size(936, 176);
             this.creditProductsDatagridView.TabIndex = 0;
+            this.creditProductsDatagridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.creditProductsDatagridView_CellMouseDoubleClick);
             // 
             // contractsTab
             // 
@@ -228,7 +229,7 @@
             // 
             this.creditSearchParameters.Location = new System.Drawing.Point(235, 148);
             this.creditSearchParameters.Name = "creditSearchParameters";
-            this.creditSearchParameters.Size = new System.Drawing.Size(432, 123);
+            this.creditSearchParameters.Size = new System.Drawing.Size(465, 123);
             this.creditSearchParameters.TabIndex = 3;
             this.creditSearchParameters.Text = "                                    Няма данни за търсене";
             // 
@@ -237,7 +238,7 @@
             this.addNewCreditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addNewCreditButton.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addNewCreditButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.addNewCreditButton.Location = new System.Drawing.Point(500, 40);
+            this.addNewCreditButton.Location = new System.Drawing.Point(552, 40);
             this.addNewCreditButton.Name = "addNewCreditButton";
             this.addNewCreditButton.Size = new System.Drawing.Size(167, 55);
             this.addNewCreditButton.TabIndex = 2;
@@ -250,7 +251,7 @@
             this.creditRegisterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.creditRegisterButton.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.creditRegisterButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.creditRegisterButton.Location = new System.Drawing.Point(150, 40);
+            this.creditRegisterButton.Location = new System.Drawing.Point(193, 40);
             this.creditRegisterButton.Name = "creditRegisterButton";
             this.creditRegisterButton.Size = new System.Drawing.Size(167, 55);
             this.creditRegisterButton.TabIndex = 1;
@@ -269,12 +270,11 @@
             this.CreditEnd,
             this.Details});
             this.credits.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.credits.Location = new System.Drawing.Point(41, 314);
+            this.credits.Location = new System.Drawing.Point(25, 314);
             this.credits.Name = "credits";
             this.credits.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.credits.Size = new System.Drawing.Size(814, 150);
+            this.credits.Size = new System.Drawing.Size(903, 150);
             this.credits.TabIndex = 0;
-            this.credits.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.credits_CellContentClick);
             // 
             // CreditNumber
             // 
@@ -324,12 +324,12 @@
             this.BackgroundImage = global::LearningCreditSystem.Desktop.Properties.Resources.BusinessBackground;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1150, 677);
-            this.Controls.Add(this.searchParameters);
+            this.Controls.Add(this.tabsContainer);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "MainScreen";
             this.Text = "MainScreen";
-            this.searchParameters.ResumeLayout(false);
+            this.tabsContainer.ResumeLayout(false);
             this.customersTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.customersDatagridView)).EndInit();
             this.creditProductsTab.ResumeLayout(false);
@@ -342,7 +342,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TabControl searchParameters;
+        private System.Windows.Forms.TabControl tabsContainer;
         private System.Windows.Forms.TabPage customersTab;
         private System.Windows.Forms.Button registerCorpoarateCustomers;
         private System.Windows.Forms.Button registerIndividualCustomersButton;

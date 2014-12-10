@@ -51,11 +51,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\AddNewCredit.cs">
+    <Compile Include="Forms\AddNewCreditToCorporateCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddNewCredit.Designer.cs">
-      <DependentUpon>AddNewCredit.cs</DependentUpon>
+    <Compile Include="Forms\AddNewCreditToCorporateCustomer.Designer.cs">
+      <DependentUpon>AddNewCreditToCorporateCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddNewCreditToIndividualCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddNewCreditToIndividualCustomer.Designer.cs">
+      <DependentUpon>AddNewCreditToIndividualCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddNewCreditPreScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddNewCreditPreScreen.Designer.cs">
+      <DependentUpon>AddNewCreditPreScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\AddNewCreditProduct.cs">
       <SubType>Form</SubType>
@@ -143,8 +155,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\AddNewCredit.resx">
-      <DependentUpon>AddNewCredit.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AddNewCreditToCorporateCustomer.resx">
+      <DependentUpon>AddNewCreditToCorporateCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddNewCreditToIndividualCustomer.resx">
+      <DependentUpon>AddNewCreditToIndividualCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddNewCreditPreScreen.resx">
+      <DependentUpon>AddNewCreditPreScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddNewCreditProduct.resx">
       <DependentUpon>AddNewCreditProduct.cs</DependentUpon>

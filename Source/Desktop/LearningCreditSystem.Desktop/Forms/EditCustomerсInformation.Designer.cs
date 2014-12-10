@@ -47,7 +47,7 @@
             this.editButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.editButton.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.editButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.editButton.Location = new System.Drawing.Point(832, 72);
+            this.editButton.Location = new System.Drawing.Point(847, 72);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(135, 54);
             this.editButton.TabIndex = 4;

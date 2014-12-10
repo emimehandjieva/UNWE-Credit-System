@@ -1,8 +1,10 @@
 ﻿namespace LearningCreditSystem.Desktop.Forms
 {
     using LearningCreditSystem.Desktop.Common;
+    using System;
     using System.Collections.Generic;
     using System.Drawing;
+    using System.Text;
     using System.Windows.Forms;
 
     public partial class SearchCorporateCustomers : Form
@@ -25,6 +27,20 @@
             string name = companyName.Text;
             string email = companyEmail.Text;
             string phone = companyPhone.Text;
+            var searchParameters = new Dictionary<string, string>()
+            {
+                {"Булстат", UIC},
+                {"Име на фирма", name},
+                {"Имейл", email},
+                {"Телефон", phone}
+            };
+            var searchParametersStringBuilder = new StringBuilder();
+
+            foreach (var parameter in searchParameters)
+            {
+                searchParametersStringBuilder.Append(parameter.Key + ": " + parameter.Value);
+                searchParametersStringBuilder.Append(Environment.NewLine);
+            }
 
             // Retieve information and pass it to the main form to be displayed
             // Data from database search
@@ -39,7 +55,7 @@
             // This way we allow the user to see all search parameters used in the query
             // Sample format : "<Parameter Name> : <Value>"
             //                   Фирма: ФирмаООД
-            MainScreen.SearchParameteres = "These are the results from coporate customers search";
+            MainScreen.SearchParameteres = searchParametersStringBuilder.ToString();
             this.Close();
         }
     }

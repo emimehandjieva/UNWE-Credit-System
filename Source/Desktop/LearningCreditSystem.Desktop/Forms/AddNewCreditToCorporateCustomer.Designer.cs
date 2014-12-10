@@ -1,6 +1,6 @@
 ﻿namespace LearningCreditSystem.Desktop.Forms
 {
-    partial class AddNewCredit
+    partial class AddNewCreditToCorporateCustomer
     {
         /// <summary>
         /// Required designer variable.

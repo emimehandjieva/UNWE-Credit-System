@@ -8,6 +8,10 @@
 
     public partial class MainScreen : BaseForm
     {
+        private const string NoCustomersCaption = "Няма избрани клиенти";
+        private const string NoCustomersSelectedMessage = "Моля изберете клиент преди да добавите кредит.";
+        private const string NoCustomersFoundMessage = "Не са налични данни за клиенти. Моля направете търсене преди да изберете опцията за добавяне на кредит.";
+
         private static string[] individualCustomersColumnNames = {"ЕГН", "Име", "Фамилия", "Имейл", "Телефон"};
         private static string[] corporateCustomersColumnNames = {"БУЛСТАТ", "Фирма", "Имейл", "Телефон"};
         private static string[] creditProductColumnNames = 
@@ -134,8 +138,8 @@
 
         private void addNewCreditButton_Click(object sender, System.EventArgs e)
         {
-            var newCreditForm = new AddNewCredit();
-            newCreditForm.Show();
+            var newCreditPreScreen = new AddNewCreditPreScreen();
+            newCreditPreScreen.ShowDialog();
         }
 
         private void addCreditButton_Click(object sender, System.EventArgs e)
@@ -144,22 +148,30 @@
             bool hasSelectedCustomer = customersDatagridView.SelectedRows.Count > 0;
             if (!hasCustomers)
             {
-                base.ShowMessage("No customers", "Please search for customers before add new credit");
+                base.ShowMessage(NoCustomersCaption, NoCustomersFoundMessage);
             }
             else if (!hasSelectedCustomer)
             {
-                base.ShowMessage("No customers", "Please select a customer before add new credit");
+                base.ShowMessage(NoCustomersCaption, NoCustomersSelectedMessage);
             }
             else
             {
-                AddNewCredit newCreditForm = new AddNewCredit();
+                var newCreditForm = new AddNewCreditToIndividualCustomer();
                 newCreditForm.ShowDialog();
             }
         }
 
-        private void credits_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void creditProductsDatagridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            base.ShowMessage("", "Clicked");
+            var currentRowSelected = creditProductsDatagridView.CurrentRow;
+            var creditProductDataList = new List<string>();
+            foreach (DataGridViewTextBoxCell cell in currentRowSelected.Cells)
+            {
+                creditProductDataList.Add(cell.Value.ToString());
+            }
+            string[] creditProductData = creditProductDataList.ToArray();
+            var editForm = new EditCreditProduct(CurrentColumnNames, creditProductData);
+            editForm.ShowDialog();
         }
     }
 }

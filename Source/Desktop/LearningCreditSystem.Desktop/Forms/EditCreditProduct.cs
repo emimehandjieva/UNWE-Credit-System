@@ -1,20 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace LearningCreditSystem.Desktop.Forms
+﻿namespace LearningCreditSystem.Desktop.Forms
 {
+    using LearningCreditSystem.Desktop.Common;
+    using System.Drawing;
+    using System.Windows.Forms;
+
     public partial class EditCreditProduct : Form
     {
-        public EditCreditProduct()
+        public EditCreditProduct(string[] columnNames, string[] creditProductData)
         {
             InitializeComponent();
+
+            int columnsCount = columnNames.Length;
+            currentCreditProduct.ColumnCount = columnNames.Length;
+
+            for (int column = 0; column < columnsCount; column++)
+            {
+                currentCreditProduct.Columns[column].Name = columnNames[column];
+            }
+            currentCreditProduct.Rows.Add(creditProductData);
+
+            editButton.BackColor = ColorFactory.GetColor(ProjectColor.DarkGrey);
+            editButton.ForeColor = Color.Black;
+        }
+
+        private void editButton_Click(object sender, System.EventArgs e)
+        {
+
         }
     }
 }
